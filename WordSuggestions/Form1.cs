@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Tries;
+using System.Text.RegularExpressions;
 
 namespace WordSuggestions
 {
@@ -40,7 +41,7 @@ namespace WordSuggestions
             SpellingSuggestions.Items.Clear();
 
             string currentWord = (InputBox.Text.Contains(' ') ? InputBox.Text.Substring(InputBox.Text.LastIndexOf(' ')) : InputBox.Text).Trim(' '); //gets the last or only word from the input
-            if (currentWord == "") return;
+            if (currentWord == "" || Regex.IsMatch(currentWord,"/[^A-Za-z]")) return; 
             var completionSuggestions = wordsTrie.GetAllWordsMatchingPrefix(currentWord);
 
             for(int i = 0;i<NumberOfSuggestions;i++)

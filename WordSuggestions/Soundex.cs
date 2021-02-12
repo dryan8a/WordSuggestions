@@ -60,7 +60,7 @@ namespace WordSuggestions
             {
                 return '6';
             }
-            return ' ';
+            return ' '; //returns ' ' for invalid or ignored characters
         }
 
         public static int FindSoundexDifference(string soundex1, string soundex2)

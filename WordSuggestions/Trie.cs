@@ -125,20 +125,6 @@ namespace Tries
             return true;
         }
 
-        private TrieNode FindNode(string prefix)
-        {
-            prefix = prefix.ToLower();
-            var currentNode = Root;
-            for(int i = 0;i<prefix.Length;i++)
-            {
-                if(!currentNode.Children.TryGetValue(prefix[i], out currentNode))
-                {
-                    return null;
-                }
-            }
-            return currentNode;
-        }
-
         public IEnumerable<string> GetAllWordsMatchingPrefix(string prefix)
         {
             prefix = prefix.ToLower();
@@ -154,6 +140,20 @@ namespace Tries
             GetMatchingWord(node, output, prefix.Substring(0,prefix.Length-1));
 
             return output;
+        }
+
+        private TrieNode FindNode(string prefix)
+        {
+            prefix = prefix.ToLower();
+            var currentNode = Root;
+            for (int i = 0; i < prefix.Length; i++)
+            {
+                if (!currentNode.Children.TryGetValue(prefix[i], out currentNode))
+                {
+                    return null;
+                }
+            }
+            return currentNode;
         }
 
         private void GetMatchingWord(TrieNode node, List<string> words, string prefix)
