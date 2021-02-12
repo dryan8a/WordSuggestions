@@ -14,7 +14,7 @@ namespace WordSuggestions
 {
     public partial class Form1 : Form
     {
-        int NumberOfSuggestions = 5;
+        int NumberOfSuggestions = 7;
         string[] words;
         Trie wordsTrie = new Trie();
 

@@ -27,8 +27,9 @@ namespace Tries
             Root = new TrieNode('\n',false);
         }
 
-        public bool Insert(string word)
+        public bool Insert(string word) //same as Add but recursive
         {
+            word = word.ToLower();
             return InsertLetters(word.AsSpan(), Root);
 
             bool InsertLetters(ReadOnlySpan<char> letters, TrieNode node)
@@ -53,6 +54,7 @@ namespace Tries
 
         public bool Add(string word)
         {
+            word = word.ToLower();
             var currentNode = Root;
             int letterIndex = -1;
             foreach(char character in word)
@@ -79,6 +81,7 @@ namespace Tries
 
         public bool Remove(string word)
         {
+            word = word.ToLower();
             TrieNode currentNode = Root;
             for (int i = 0; i < word.Length; i++)
             {
@@ -94,8 +97,9 @@ namespace Tries
             return true;
         }
 
-        public bool IsThere(string word)
+        public bool IsThere(string word) //recursive ContainsWord
         {
+            word = word.ToLower();
             return Contains(word.AsSpan(), Root);
 
             bool Contains(ReadOnlySpan<char> wordAsChars, TrieNode node)
@@ -110,6 +114,7 @@ namespace Tries
 
         public bool ContainsWord(string word)
         {
+            word = word.ToLower();
             TrieNode currentNode = Root;
             for(int i = 0;i<word.Length;i++) 
             {
@@ -120,8 +125,9 @@ namespace Tries
             return true;
         }
 
-        public TrieNode FindNode(string prefix)
+        private TrieNode FindNode(string prefix)
         {
+            prefix = prefix.ToLower();
             var currentNode = Root;
             for(int i = 0;i<prefix.Length;i++)
             {
@@ -135,6 +141,7 @@ namespace Tries
 
         public IEnumerable<string> GetAllWordsMatchingPrefix(string prefix)
         {
+            prefix = prefix.ToLower();
             List<string> output = new List<string>();
 
             TrieNode node = FindNode(prefix);
