@@ -39,6 +39,39 @@ namespace WordSuggestions
         }
 
         /// <summary>
+        /// Gets Levenshtein distance of two strings using the two matrix rows implementation
+        /// </summary>
+        /// <param name="left">The first string to compare</param>
+        /// <param name="right">The second string to compare</param>
+        /// <returns></returns>
+        public static int GetPartialMatrixDistance(string left, string right)
+        {
+            var previousRow = new int[right.Length + 1];
+            var currentRow = new int[right.Length + 1];
+
+            for(int i = 0;i<=right.Length;i++)
+            {
+                previousRow[i] = i;
+            }
+
+            for(int i = 0; i < left.Length; i++)
+            {
+                currentRow[0] = i + 1;
+
+                for(int j = 0; j < right.Length; j++)
+                {
+                    int subCost = left[i] == right[j] ? previousRow[j] : previousRow[j] + 1;
+                    currentRow[j + 1] = Math.Min(previousRow[j + 1] + 1, Math.Min(currentRow[j] + 1, subCost));
+                }
+
+                previousRow = currentRow;
+                currentRow = new int[right.Length + 1];
+            }
+
+            return previousRow[right.Length];
+        }
+
+        /// <summary>
         /// Gets the Maximum Possible Levenshtein distance between two words
         /// </summary>
         /// <param name="left">The first string to compare</param>
@@ -50,7 +83,7 @@ namespace WordSuggestions
         }
 
         /// <summary>
-        /// Gets the Ratio of the Actual Levenshtein distance to the Max Levenshtein distance of two words
+        /// Gets the Ratio of the Actual Levenshtein distance to the Max Levenshtein distance of two words using the full matrix implementation
         /// </summary>
         /// <param name="left">The first string to compare</param>
         /// <param name="right">The second string to compare</param>
@@ -58,6 +91,17 @@ namespace WordSuggestions
         public static double GetFullMatrixLevenshteinRatio(string left,string right)
         {
             return (double)GetFullMatrixDistance(left, right) / GetMaxDistance(left, right);
+        }
+
+        /// <summary>
+        /// Gets the Ratio of the Actual Levenshtein distance to the Max Levenshtein distance of two words using the two matrix rows implementation
+        /// </summary>
+        /// <param name="left">The first string to compare</param>
+        /// <param name="right">The second string to compare</param>
+        /// <returns></returns>
+        public static double GetPartialMatrixLevenshteinRatio(string left, string right)
+        {
+            return (double)GetPartialMatrixDistance(left, right) / GetMaxDistance(left, right);
         }
     }
 }
