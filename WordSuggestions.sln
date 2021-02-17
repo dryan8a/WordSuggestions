@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordSuggestions", "WordSuggestions\WordSuggestions.csproj", "{1E53FD86-2D3C-4E22-B50E-AF67459627CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordSuggestionsBenchmarkingTests", "WordSuggestionsBenchmarkingTests\WordSuggestionsBenchmarkingTests.csproj", "{A525B411-2035-4F59-9F8A-374B8B482634}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordSuggestionsUtility", "WordSuggestionsUtility\WordSuggestionsUtility.csproj", "{E1DCBA65-1843-4305-9574-AE481B16C468}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{1E53FD86-2D3C-4E22-B50E-AF67459627CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E53FD86-2D3C-4E22-B50E-AF67459627CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E53FD86-2D3C-4E22-B50E-AF67459627CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A525B411-2035-4F59-9F8A-374B8B482634}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A525B411-2035-4F59-9F8A-374B8B482634}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A525B411-2035-4F59-9F8A-374B8B482634}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A525B411-2035-4F59-9F8A-374B8B482634}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1DCBA65-1843-4305-9574-AE481B16C468}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1DCBA65-1843-4305-9574-AE481B16C468}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1DCBA65-1843-4305-9574-AE481B16C468}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1DCBA65-1843-4305-9574-AE481B16C468}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

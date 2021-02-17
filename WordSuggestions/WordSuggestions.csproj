@@ -65,12 +65,8 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Levenshtein.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Soundex.cs" />
-    <Compile Include="Trie.cs" />
-    <Compile Include="WordDifferentiator.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -96,6 +92,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WordSuggestionsUtility\WordSuggestionsUtility.csproj">
+      <Project>{e1dcba65-1843-4305-9574-ae481b16c468}</Project>
+      <Name>WordSuggestionsUtility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
