@@ -54,6 +54,9 @@ namespace WordSuggestions
             UpdateSuggestions();
         }
 
+        /// <summary>
+        /// Updates the two Suggestion Boxes based on soundex, levenshtein's distance, and word completion using a trie
+        /// </summary>
         private void UpdateSuggestions()
         {
             CompletionSuggestions.Items.Clear();
@@ -87,6 +90,11 @@ namespace WordSuggestions
             }
         }
 
+        /// <summary>
+        /// Takes a list of words and adds them to the Spelling Suggestion box based on if they fit within the acceptable Levenshtein ratio
+        /// </summary>
+        /// <param name="words">List of words to add</param>
+        /// <param name="currentWord">Entered word used to get Levenshtein's distance</param>
         private void AddItemsToSpellingSuggestions(List<string> words, string currentWord)
         {
             int i = 0;
@@ -94,7 +102,7 @@ namespace WordSuggestions
             {
                 if (CapSuggestions && i == NumberOfSuggestionsCap - SpellingSuggestions.Items.Count) return;
 
-                if (Levenshtein.GetFullMatrixLevenshteinRatio(currentWord, word) <= MaxLevenshteinRatio)
+                if (Levenshtein.GetPartialMatrixLevenshteinRatio(currentWord, word) <= MaxLevenshteinRatio)
                 {
                     SpellingSuggestions.Items.Add(word);
                     i++;
